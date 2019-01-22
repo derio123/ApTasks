@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" title="Ir à tela principal" routerDirection="auto"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Tarefas</ion-label>
+      <ion-input required type="text" [(ngModel)]="todo.task">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prioridade</ion-label>
+      <ion-input required type="number" [(ngModel)]="todo.priority">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button color="success" fill="outline" expand="full" (click)="salvar()">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+  </ion-button>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" title="Ir à tela principal" routerLink="/home" routerDirection="auto">
+      <ion-icon color="danger" name="arrow-back"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

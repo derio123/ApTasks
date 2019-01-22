@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar color="orange">
+    <ion-title text-center color="warning">ApTasks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="orange">
+  <!--Notificações-->
+  <div [ngSwitch]="pet" color="warning">
+    <!--1°Aba-->
+    <ion-list *ngSwitchCase="'agenda'">
+      <!--Caso se for  produto usará value do mesmo-->
+      <ng-container *ngIf="!todos || todos.length == 0">
+        <div *ngFor="let n of [0,1,2]" padding>
+          <ion-skeleton-text></ion-skeleton-text>
+          <p>
+            <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+          </p>
+        </div>
+      </ng-container>
+
+      <ion-item-sliding *ngFor="let item of todos">
+
+        <ion-item color="success" >
+          <ion-label>{{ item.task }}
+            <p>{{ item.createdAt | date:'short' }}</p>
+          </ion-label>
+          <ion-note slot="end" color="primary">{{ item.priority }}</ion-note>
+          <ion-button fill="outline" (click)="remove(item)" title="Exlcuir tarefa">
+              <ion-icon color="danger" center slot="end" name="trash"></ion-icon>
+            </ion-button>
+        </ion-item>
+        <ion-item-options side="start">
+          <ion-item-option slot="icon-only" title="Editar a tarefa" [routerLink]="['/detalhes', item.id]">
+            <ion-icon color="warning" center name="create"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <!--2°Aba-->
+    <ion-list *ngSwitchCase="'cliente'">
+      <ion-item color="secondary">
+        <ion-thumbnail item-start>
+          <img src="../assets/imgs/Derio.jpg">
+        </ion-thumbnail>
+        <h2>Dério</h2>
+      </ion-item>
+    </ion-list>
+
+    <!--3°Aba-->
+    <ion-list *ngSwitchCase="'info'">
+      <ion-card color="secondary">
+        <ion-avatar item-start>
+          <img src="../assets/imgs/Derio.jpg">
+        </ion-avatar>
+        <h3 text-center>Autor: <strong>Derio Matheus</strong></h3>
+        <ion-card-content>
+          <h3>Profissão: <strong>Desenvolvedor web mobile</strong></h3>
+        </ion-card-content>
+      </ion-card>
+      <ion-card color="secondary">
+        <ion-avatar item-start>
+          <img src="../assets/imgs/checklist.png">
+        </ion-avatar>
+        <h3 text-center>Sobre: <strong>ApTasks</strong></h3>
+        <ion-card-content>
+          <h3>APP: <strong>Versão</strong><b>1.1.1</b></h3>
+          <address></address>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" title="Adicionar nova tarefa" routerLink="/detalhes" routerDirection="forward">
+      <ion-icon color="danger" name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<!--Footer com tabs segements-->
+<ion-footer translucent no-border>
+  <ion-toolbar color="orange" >
+    <!-- Scrollable Segment -->
+    <ion-segment scrollable color="primary" [(ngModel)]="pet" (ionChange)="segmentChanged($event)">
+      <!--<ion-menu-button title="menu" color="primary" slot="icon-only">
+      </ion-menu-button>-->
+      <!--1°Aba-->
+      <ion-segment-button title="Agenda de tarefas" value="agenda">
+        <ion-icon color="primary" name="bookmarks"></ion-icon>
+        Tarefas
+      </ion-segment-button>
+
+      <!--2°Aba-->
+      <ion-segment-button title="clientes" checked value="cliente">
+        <ion-icon color="primary" name="person"></ion-icon> Contatos
+      </ion-segment-button>
+      <!--3°Aba-->
+      <ion-segment-button title="Sobre o ApTasks" value="info">
+        <ion-icon color="primary" name="information-circle"></ion-icon>
+        Sobre
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>
