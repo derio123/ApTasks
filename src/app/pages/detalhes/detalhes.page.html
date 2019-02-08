@@ -11,7 +11,7 @@
   <ion-list lines="full">
     <ion-item>
       <ion-label position="floating">Tarefas</ion-label>
-      <ion-input required type="text" [(ngModel)]="todo.task">
+      <ion-input required placeholder="Digite sua Tarefa" type="text" [(ngModel)]="todo.task">
       </ion-input>
     </ion-item>
     <ion-item>
@@ -20,12 +20,12 @@
       </ion-input>
     </ion-item>
   </ion-list>
-  <ion-button color="success" fill="outline" expand="full" (click)="salvar()">
+  <ion-button color="success" fill="clear" title="Gravar" expand="full" (click)="salvar()">
     <ion-icon name="checkmark-circle-outline"></ion-icon>
   </ion-button>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="success" title="Ir à tela principal" routerLink="/home" routerDirection="auto">
+    <ion-fab-button translucent="true"  color="success" title="Ir à tela principal" routerLink="/home" routerDirection="auto">
       <ion-icon color="danger" name="arrow-back"></ion-icon>
     </ion-fab-button>
   </ion-fab>

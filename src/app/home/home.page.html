@@ -21,18 +21,20 @@
 
       <ion-item-sliding *ngFor="let item of todos">
 
-        <ion-item color="success" >
-          <ion-label>{{ item.task }}
-            <p>{{ item.createdAt | date:'short' }}</p>
+        <ion-item color="success">
+          <ion-label><b>Tarefa:</b>{{ item.task }}
+            <p><b>Data: </b>{{ item.createdAt | date:'short' }}</p>
+            <ion-note slot="icon-only" color="primary"><b>Prioridade: </b>{{ item.priority }}</ion-note>
           </ion-label>
-          <ion-note slot="end" color="primary">{{ item.priority }}</ion-note>
-          <ion-button fill="outline" (click)="remove(item)" title="Exlcuir tarefa">
-              <ion-icon color="danger" center slot="end" name="trash"></ion-icon>
-            </ion-button>
+          <ion-button size="large"  fill="clear" slot="end" (click)="remove(item)" title="Exlcuir tarefa">
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-button>
         </ion-item>
         <ion-item-options side="start">
           <ion-item-option slot="icon-only" title="Editar a tarefa" [routerLink]="['/detalhes', item.id]">
-            <ion-icon color="warning" center name="create"></ion-icon>
+            <ion-button size="large"  fill="clear">
+              <ion-icon color="warning" name="create"></ion-icon>
+            </ion-button>
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
@@ -81,9 +83,9 @@
 
 <!--Footer com tabs segements-->
 <ion-footer translucent no-border>
-  <ion-toolbar color="orange" >
+  <ion-toolbar color="orange">
     <!-- Scrollable Segment -->
-    <ion-segment scrollable color="primary" [(ngModel)]="pet" (ionChange)="segmentChanged($event)">
+    <ion-segment scrollable color="warning" [(ngModel)]="pet" (ionChange)="segmentChanged($event)">
       <!--<ion-menu-button title="menu" color="primary" slot="icon-only">
       </ion-menu-button>-->
       <!--1°Aba-->

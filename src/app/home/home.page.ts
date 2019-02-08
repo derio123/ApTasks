@@ -29,7 +29,7 @@ export class HomePage  implements OnInit {
       buttons: [{
           text: 'Cancelar',
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'orange',
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
           }}, {
