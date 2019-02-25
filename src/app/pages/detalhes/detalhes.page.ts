@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class DetalhesPage implements OnInit {
 
   todo: Todo = {
+    nome: ' ',
+    phone: ' ',
     task: ' ',
     createdAt: new Date().getTime(),
     priority: 0

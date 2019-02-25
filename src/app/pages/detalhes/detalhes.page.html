@@ -7,10 +7,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding color="dark">
+<ion-content padding class="wallpaper">
   <ion-list lines="full">
+    <ion-avatar class="avatar" slot="end">
+        <ion-icon size="large" color="primary" name="contact"></ion-icon>
+      <!-- <img src="">  ../assets/imgs/Derio.jpg  -->
+    </ion-avatar>
     <ion-item>
-      <ion-label position="floating">Tarefas</ion-label>
+      <ion-label position="floating">
+        <ion-icon size="large" name="contact"></ion-icon>Nome
+      </ion-label>
+      <ion-input required placeholder="Digite o nome do contato" type="text" [(ngModel)]="todo.nome">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+
+      <ion-label position="floating">
+        <ion-icon size="large" name="call"></ion-icon>Telefone
+      </ion-label>
+      <ion-input required type="number" placeholder="+55(61)xxxxxxxx" [(ngModel)]="todo.phone">
+      </ion-input>
+
+      <ion-label position="floating">
+        <ion-icon size="large" name="paper"></ion-icon>Tarefas
+      </ion-label>
       <ion-input required placeholder="Digite sua Tarefa" type="text" [(ngModel)]="todo.task">
       </ion-input>
     </ion-item>
@@ -25,7 +45,7 @@
   </ion-button>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button translucent="true"  color="success" title="Ir à tela principal" routerLink="/home" routerDirection="auto">
+    <ion-fab-button translucent="true" color="success" title="Ir à tela principal" routerLink="/home" routerDirection="auto">
       <ion-icon color="danger" name="arrow-back"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home" title="Ir à tela principal" routerDirection="auto"></ion-back-button>
+      </ion-buttons>
+      <ion-title text-center>Detalhes do Contato</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding color="dark">
+      <ion-list *ngSwitchCase="'info'"  class="wallpaper">
+          <ion-card color="secondary">
+            <ion-avatar item-start>
+              <img src="../assets/imgs/Derio.jpg">
+            </ion-avatar>
+            <h3 text-center>Autor: <strong>Derio Matheus</strong></h3>
+            <ion-card-content>
+              <h3 text-center>Profissão: <strong>Desenvolvedor web mobile</strong></h3>
+            </ion-card-content>
+          </ion-card>
+          <ion-card color="secondary">
+            <ion-avatar item-start>
+              <img src="../assets/imgs/checklist.png">
+            </ion-avatar>
+            <h3 text-center>Sobre: <strong>ApTasks</strong></h3>
+            <ion-card-content>
+              <h3 text-center>APP: <strong>Versão</strong><b>1.2.0</b></h3>
+              <address></address>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+  </ion-content>
