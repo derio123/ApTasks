@@ -19,12 +19,15 @@ Para instalar o projeto veja algumas orientações abaixos:
     npm i 
     
  - Depois digite: 
+   
    ionic serve
 
  - Para versão mobile Android: 
     
     ionic cordova run android 
+    
  - Para versão mobile iOS:   
+ 
     ionic cordova run ios
 
 Mais informações no site do ionic framework: 
