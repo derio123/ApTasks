@@ -1,0 +1,19 @@
+#welcome {
+  ion-grid, ion-content, .welcome {
+    background-image: url(../../../assets/imgs/to_do.png) !important;
+    background: no-repeat;
+    
+  }
+  h1 {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: auto;
+  }
+  .marginTop {
+    margin-top: 150px;
+  }
+  img .logo {
+    height: 100px !important;
+  }
+}

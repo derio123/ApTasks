@@ -1,0 +1,27 @@
+ion-avatar,
+.avatar {
+  margin: auto;
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+}
+
+#welcome {
+  ion-grid,
+  ion-content,
+  .welcome {
+    background-color: #FF6600 !important;
+  }
+  h1 {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: auto;
+  }
+  .marginTop {
+    margin-top: 150px;
+  }
+  img .logo {
+    height: 100px !important;
+  }
+}

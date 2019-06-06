@@ -1,18 +1,34 @@
 .welcome-card ion-img {
-  max-height: 35vh;
+  max-height: 40vh;
   overflow: hidden;
 }
 .fake-skeleton {
   width: 60%;
 }
 
-ion-item, .tash{
-  background: #1E4871  !important;
-  margin: 0  0  0  0 !important ;
-  border-bottom: 1px solid #19232c  !important;
+ion-item,
+ion-footer,
+.item {
+  border-bottom: 1px !important;
   color: #0d97f3 !important;
+  background-color: #FF6600;
+  opacity: 0.8;
 }
 
-.wallpaper{
-  background-image: url('../../assets/imgs/stm5.png');
+ion-fab, 
+ion-fab-button,
+.button {
+  --background: #0d97f3 !important;
+}
+
+ion-list,
+.wallpaper {
+  background-image: url(./../../assets/imgs/to_do.png) !important;
+}
+
+ion-avatar,
+.avatar1 {
+  --border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
 }

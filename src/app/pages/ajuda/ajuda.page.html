@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="orange">
+    <ion-title text-center color="warning">
+      <ion-icon name="help-circle"></ion-icon>
+      ajuda
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="help">
+  <ion-card class="wallpaper"> 
+    <ion-card-header>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/wyVM1evRxNw" frameborder="0" width="570" height="315">
+        </iframe>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-text color="secondary">
+        <h1>Bem vindo ao ApTasks</h1>
+        <p>Deseja Ajuda? Acima temos um video de auto ajuda.</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-text  color="secondary">Quer entrar em contato com
+        <ion-anchor title="Clique no item destacado." (click)="desenvolvedor()" color="primary">
+            <ion-icon name="code-working"></ion-icon>Desenvolvedor.
+        </ion-anchor>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab class="item" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-buttons>
+        <ion-back-button defaultHref="/home" color="light" title="Ir à tela principal" routerDirection="auto">
+        </ion-back-button>
+      </ion-buttons>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

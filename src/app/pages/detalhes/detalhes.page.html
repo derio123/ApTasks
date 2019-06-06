@@ -1,23 +1,20 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" title="Ir à tela principal" routerDirection="auto"></ion-back-button>
-    </ion-buttons>
     <ion-title text-center>Detalhes</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding class="wallpaper">
-  <ion-list lines="full">
-    <ion-avatar class="avatar" slot="end">
-        <ion-icon size="large" color="primary" name="contact"></ion-icon>
-      <!-- <img src="">  ../assets/imgs/Derio.jpg  -->
+<ion-content class="wallpaper">
+  <ion-list lines="full" class="wallpaper">
+    <ion-avatar class="avatar" slot="start">
+      <!--ion-icon size="large" color="primary" name="contact"></ion-icon-->
+      <img size="large" src="../../../assets/imgs/ApTasks2019.png">
     </ion-avatar>
     <ion-item>
       <ion-label position="floating">
         <ion-icon size="large" name="contact"></ion-icon>Nome
       </ion-label>
-      <ion-input required placeholder="Digite o nome do contato" type="text" [(ngModel)]="todo.nome">
+      <ion-input required placeholder="Digite o nome do contato" type="text" [(ngModel)]="tarefa.nome">
       </ion-input>
     </ion-item>
     <ion-item>
@@ -25,28 +22,59 @@
       <ion-label position="floating">
         <ion-icon size="large" name="call"></ion-icon>Telefone
       </ion-label>
-      <ion-input required type="number" placeholder="+55(61)xxxxxxxx" [(ngModel)]="todo.phone">
+      <ion-input required type="number" placeholder="+55(61)xxxxxxxx" [(ngModel)]="tarefa.phone">
       </ion-input>
 
       <ion-label position="floating">
         <ion-icon size="large" name="paper"></ion-icon>Tarefas
       </ion-label>
-      <ion-input required placeholder="Digite sua Tarefa" type="text" [(ngModel)]="todo.task">
-      </ion-input>
+      <ion-textarea required placeholder="Digite sua Tarefa" type="text" [(ngModel)]="tarefa.task" rows="4">
+      </ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Prioridade</ion-label>
-      <ion-input required type="number" [(ngModel)]="todo.priority">
+      <ion-input required type="number" [(ngModel)]="tarefa.priority">
       </ion-input>
     </ion-item>
-  </ion-list>
-  <ion-button color="success" fill="clear" title="Gravar" expand="full" (click)="salvar()">
-    <ion-icon name="checkmark-circle-outline"></ion-icon>
-  </ion-button>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button translucent="true" color="success" title="Ir à tela principal" routerLink="/home" routerDirection="auto">
-      <ion-icon color="danger" name="arrow-back"></ion-icon>
+    <ion-item>
+      <ion-label>Concluído?</ion-label>
+      <ion-select okText="Ok" cancelText="Cancelar" placeholder="Selecione uma" [(ngModel)]="tarefa.concluidas">
+        <ion-select-option value="sim">Sim</ion-select-option>
+        <ion-select-option value="não">Não</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-fab class="item" vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-buttons>
+        <ion-back-button color="light" defaultHref="/home" title="Ir à tela principal" routerDirection="auto">
+        </ion-back-button>
+      </ion-buttons>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<ion-footer *ngIf="!tarefa.id">
+  <ion-toolbar color="success">
+    <ion-button title="Adicionar tarefa" size="large" expand="block" fill="clear" color="light" (click)="addTask()">
+      <ion-icon slot="icon-only" name="add" slot="start"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer class="wallpaper" *ngIf="tarefa.id">
+  <ion-row no-padding text-center>
+    <ion-col size="6">
+      <ion-button title="Exclui a tarefa" size="large" expand="block" fill="solid" color="danger" (click)="exTask()">
+        <ion-icon slot="icon-only" name="trash" slot="start"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button title="Atualizar a tarefa" size="large" expand="block" fill="solid" color="success"
+        (click)="atTask()">
+        <ion-icon slot="icon-only" name="save" slot="start"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

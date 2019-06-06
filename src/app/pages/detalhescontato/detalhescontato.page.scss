@@ -1,0 +1,26 @@
+ion-avatar,
+.avatar {
+  margin: auto;
+  --border-radius: 50%;
+  height: 7rem;
+  width: 7rem;
+}
+ion-item,
+ion-footer,
+.item {
+  border-bottom: 1px !important;
+  color: #0d97f3 !important;
+  background-color: orangered;
+  opacity: 0.8;
+}
+
+ion-fab, 
+ion-fab-button,
+.button {
+  --background: #0d97f3 !important;
+}
+
+ion-list,
+.wallpaper {
+  background-color: orangered;
+}

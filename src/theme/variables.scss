@@ -54,15 +54,23 @@
   --ion-color-warning-shade: #e0b500;
   --ion-color-warning-tint: #ffd31a;
 
+  /** energy **/
+  --ion-color-energy: #f2b632;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
     /**orange**/
-    .ion-color-orange {
-      --ion-color-base: 	#FF6600;
+      --ion-color-orange: #FF6600; 
+      --ion-color-base: 	rgb(255, 115, 0);
       --ion-color-base-rgb: 255,102,0;
       --ion-color-contrast: 	#FF6600;
       --ion-color-contrast-rgb: 255,255,255;
       --ion-color-shade: 	#FF6600;
       --ion-color-tint: 	#FF6600;
-    }
+    
 
   /** danger **/
   --ion-color-danger: #f04141;

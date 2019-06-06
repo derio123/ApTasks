@@ -1,32 +1,73 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/home" title="Ir à tela principal" routerDirection="auto"></ion-back-button>
-      </ion-buttons>
-      <ion-title text-center>Detalhes do Contato</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content padding color="dark">
-      <ion-list *ngSwitchCase="'info'"  class="wallpaper">
-          <ion-card color="secondary">
-            <ion-avatar item-start>
-              <img src="../assets/imgs/Derio.jpg">
-            </ion-avatar>
-            <h3 text-center>Autor: <strong>Derio Matheus</strong></h3>
-            <ion-card-content>
-              <h3 text-center>Profissão: <strong>Desenvolvedor web mobile</strong></h3>
-            </ion-card-content>
-          </ion-card>
-          <ion-card color="secondary">
-            <ion-avatar item-start>
-              <img src="../assets/imgs/checklist.png">
-            </ion-avatar>
-            <h3 text-center>Sobre: <strong>ApTasks</strong></h3>
-            <ion-card-content>
-              <h3 text-center>APP: <strong>Versão</strong><b>1.2.0</b></h3>
-              <address></address>
-            </ion-card-content>
-          </ion-card>
-        </ion-list>
-  </ion-content>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Detalhes do ApTasks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div [ngSwitch]="toor" class="wallpaper">*ngSwitchCase="'desenvolvedor'" -->
+  <ion-list class="wallpaper">
+    <ion-avatar class="avatar" item-start>
+      <img src="../assets/imgs/checklist.png">
+    </ion-avatar>
+    <ion-card color="secondary">
+      <h3 text-center>Sobre: <strong>ApTasks</strong></h3>
+      <ion-card-content>
+        <ion-text color="primary">
+          <h1>Versões</h1>
+          <ion-badge color="danger">1.2</ion-badge>
+          
+          <p>Solução do erro na barra de status do aplicativo, 
+            como também na redução da foto de perfil.</p>
+          <address></address>
+          <ion-badge color="primary">1.1</ion-badge>
+          
+          <p>Soluções de erros em privacidade.</p>
+          <address></address>
+          <ion-badge color="primary">1.0</ion-badge>
+          
+          <p>Melhorias no design do App e no banco de dados</p>
+          <address></address>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-list>
+    <ion-card color="secondary">
+      <ion-avatar class="avatar" item-start>
+        <img src="../assets/imgs/Derio.jpg">
+      </ion-avatar>
+      <h3 text-center>Desenvolvedor: <strong>Derio Matheus</strong></h3>
+      <ion-card-content>
+        <h3 text-center>Profissão: <strong>Desenvolvedor web mobile</strong></h3>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <!-- </div>
+  <div [ngSwitch]="toor" color="warning">  *ngSwitchCase="'app'" -->
+
+  <!-- </div> -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button title="Adicionar novas tarefas" translucent="true" routerLink="/home" routerDirection="auto">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+<!-- <ion-footer>
+  <ion-toolbar color="orange">
+    Scrollable Segment
+    <ion-segment scrollable color="warning" [(ngModel)]="toor" (ionChange)="segmentChanged($event)">
+      <!--  <ion-back-button defaultHref="/home" title="Ir à tela principal" color="warning" routerDirection="auto">
+      </ion-back-button> 
+      <ion-segment-button title="Contato" value="desenvolvedor">
+        <ion-icon name="code"></ion-icon>
+        Desenvolvedor
+      </ion-segment-button>
+      <!--2°Aba
+      <ion-segment-button title="Sobre o ApTasks" value="app">
+        <ion-icon color="primary" name="information-circle"></ion-icon>
+        Sobre App
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer> -->

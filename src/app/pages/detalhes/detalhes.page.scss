@@ -1,8 +1,18 @@
-.avatar{
-    margin: auto;
- }
+.avatar {
+  margin: auto;
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+}
 
- .wallpaper{
-    background-image: url('../../../assets/imgs/stm5.png') ;
- }
-  
+ion-fab,
+ion-item,
+ion-footer,
+.item {
+  opacity: 0.9;
+  margin: 0 0 0 0 !important ;
+}
+
+.wallpaper {
+  background-color: orangered;
+}

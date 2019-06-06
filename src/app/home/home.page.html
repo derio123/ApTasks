@@ -1,14 +1,18 @@
 <ion-header>
   <ion-toolbar color="orange">
-    <ion-buttons slot="start">
-      <ion-menu-button title="menu" color="primary" slot="icon-only">
-      </ion-menu-button>
+    <ion-buttons slot="end">
+      <ion-avatar (click)="perfilPopover($event)" class="avatar1">
+        <!--ion-icon size="large" color="primary" name="contact"></ion-icon-->
+        <img src="../../assets/imgs/ApTasks2019.png">
+      </ion-avatar>
     </ion-buttons>
-    <ion-title text-center color="warning">ApTasks</ion-title>
-    <ion-buttons slot="end" >
-      <ion-button horizontal="center" color="success" size="large" slot="icon-only" fill="clear" title="Adicionar nova tarefa"
-        routerLink="/detalhes" routerDirection="forward">
-        <ion-icon color="success" name="add-circle"></ion-icon>
+    <ion-title text-center color="warning">
+      <ion-icon name="book"></ion-icon>
+      ApTasks
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button slot="icon-only">
+        <ion-icon color="light" name="search"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -16,74 +20,116 @@
 
 <ion-content>
   <!--Notificações-->
-  <!-- <div [ngSwitch]="pet" color="warning" > *ngSwitchCase="'agenda'" -->
+
   <!--1°Aba-->
-  <ion-list class="wallpaper" translucent no-border>
-    <!--Caso se for  produto usará value do mesmo-->
-    <ng-container *ngIf="!todos || todos.length == 0">
+  <ion-list class="wallpaper">
+    <!--Caso se for  produto usará value do mesmo [ngSwitch]="pet" *ngSwitchCase="'tarefas'"-->
+    <ion-card *ngFor="let tarefa of tarefas">
+      <ion-item class="item" button [routerLink]="['/detalhes', tarefa.id]">
+        <!-- <ion-icon name="pin" slot="start"></ion-icon> -->
+        <!-- <ion-thumbnail size="large" class="avatar" slot="start">
+          ion-icon size="large" color="primary" name="contact"></ion-icon
+          <img src="../../assets/imgs/ApTasks2019.png">
+        </ion-thumbnail> -->
+        <ion-label color="primary">
+          <ion-note slot="icon-only" color="primary"> <b>Nome:</b>{{ tarefa.nome }}</ion-note>
+          <br>
+          <ion-note slot="icon-only" color="primary"><b>Telefone: </b>{{ tarefa.phone }}</ion-note>
+          <br>
+          <ion-text slot="icon-only" color="primary"><b>Tarefa:</b>
+            <p>{{ tarefa.task }}</p>
+          </ion-text>
+          <ion-note slot="icon-only" color="primary"> <b>Concluidos:</b> {{ tarefa.concluidas }}</ion-note>
+          <p><b>Data: </b>{{ tarefa.createdAt | date:'short' }}</p>
+          <ion-note slot="icon-only" color="primary"><b>Prioridade: </b>{{ tarefa.priority }}</ion-note>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+
+  <!-- <div [ngSwitch]="pet" color="warning">
+    <ion-list *ngSwitchCase="'concluidas'" class="wallpaper">
+      <!--Caso se for  produto usará value do mesmo-->
+  <!-- <ion-card *ngFor="let tarefa of tarefas">
+        <ion-item class="item" button [routerLink]="['/detalhes', tarefa.id]">
+          <!-- <ion-icon name="pin" slot="start"></ion-icon> -->
+  <!--  <ion-label color="primary">
+            <ion-text slot="icon-only" color="primary"><b>Tarefa:</b>
+              <p>{{ tarefa.task }}</p>
+            </ion-text>
+            <ion-note slot="icon-only" color="primary"> <b>Concluidos:</b> {{ tarefa.concluidas }}</ion-note>
+            <p><b>Data: </b>{{ tarefa.createdAt | date:'short' }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card> 
+    </ion-list>
+  </div>-->
+  <!--2°Aba-->
+  <!--/2°Aba-->
+ <!--  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="presentPopover($event)">
+      <ion-icon name="book"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button size="large" title="Adicionar novas tarefas" translucent="true" routerLink="/detalhes"
+      routerDirection="auto">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<!--Footer com tabs segements-->
+<!-- <ion-footer>
+  <ion-toolbar color="orange">
+    <!--  Scrollable Segment 
+    <ion-segment scrollable color="warning" [(ngModel)]="pet" (ionChange)="segmentChanged($event)">
+      <ion-menu-button title="menu" color="primary" slot="icon-only">
+      </ion-menu-button>
+      <!--1°Aba 
+      <ion-segment-button title="Agenda de tarefas" value="tarefas" checked>
+        <ion-icon color="primary" name="bookmarks"></ion-icon>
+        Tarefas
+      </ion-segment-button>
+
+      2°Aba
+      <ion-segment-button title="Sobre o ApTasks" value="concluidas">
+        <ion-icon color="primary" name="information-circle"></ion-icon>
+        Concluídas
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer> -->
+
+<!-- <ng-container *ngIf="!todos || todos.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
         <ion-skeleton-text></ion-skeleton-text>
         <p>
           <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
         </p>
       </div>
-    </ng-container>
-    <ion-card>
-      <ion-item color="translucent" *ngFor="let item of todos">
-        <!-- <ion-icon name="pin" slot="start"></ion-icon> -->
-        <!-- <ion-avatar slot="start">
-            <img src="../assets/imgs/Derio.jpg">
-          </ion-avatar> -->
-        <ion-label color="primary">
-          <ion-note slot="icon-only" color="primary"> <b>Nome:</b>{{ item.nome }}</ion-note>
-          <br>
-          <ion-note slot="icon-only" color="primary"><b>Telefone: </b>{{ item.phone }}</ion-note>
-          <br>
-          <ion-text slot="icon-only" color="primary"><b>Tarefa:</b>
-            <p>{{ item.task }}</p>
-          </ion-text>
-          <p><b>Data: </b>{{ item.createdAt | date:'short' }}</p>
-          <ion-note slot="icon-only" color="primary"><b>Prioridade: </b>{{ item.priority }}</ion-note>
-        </ion-label>
+    </ng-container> -->
 
-        <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
-        <ion-card-content>
-          <ion-button size="large" fill="clear" slot="end" (click)="remove(item)" title="Exlcuir tarefa">
+<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+<!--<ion-card-content>
+           <ion-button size="large" fill="clear" slot="end" (click)="remove(item)" title="Exlcuir tarefa">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
           <br>
-          <ion-button size="large" fill="clear" slot="icon-only" title="Editar a tarefa" [routerLink]="['/detalhes', item.id]"
-            routerDirection="forward">
+          <ion-button size="large" fill="clear" slot="icon-only" title="Editar a tarefa"
+            [routerLink]="['/detalhes', item.id]" routerDirection="forward">
             <ion-icon color="warning" name="create"></ion-icon>
-          </ion-button>
-        </ion-card-content>
-      </ion-item>
-    </ion-card>
-  </ion-list>
+          </ion-button> 
+        </ion-card-content>-->
 
-  <!--2°Aba-->
-
-  <!-- </div> -->
-</ion-content>
-
-<!--Footer com tabs segements-->
-<!-- <ion-footer >
-   <ion-toolbar color="orange">
-    <!-- Scrollable Segment 
-    <ion-segment scrollable color="warning" [(ngModel)]="pet" (ionChange)="segmentChanged($event)">
-      <!--<ion-menu-button title="menu" color="primary" slot="icon-only">
-      </ion-menu-button>-->
-<!--1°Aba
-      <ion-segment-button title="Agenda de tarefas" value="agenda">
-        <ion-icon color="primary" name="bookmarks"></ion-icon>
-        Tarefas
-      </ion-segment-button>
-
-      2°Aba
-      <ion-segment-button title="Sobre o ApTasks" value="info">
-        <ion-icon color="primary" name="information-circle"></ion-icon>
-        Sobre
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar> 
-</ion-footer> -->
+<!-- <ion-buttons slot="end">
+      <ion-button horizontal="center" size="large" slot="icon-only" fill="clear" title="Sair do Aplicativo"
+        routerDirection="forward">
+        <ion-icon color="primary" slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+<!-- <ion-buttons slot="start">
+     
+    </ion-buttons> -->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, NavController } from '@ionic/angular';
-import { GeraisService, Todo } from 'src/app/services/gerais.service';
-import { ActivatedRoute } from '@angular/router';
+import { ToastController, AlertController } from '@ionic/angular';
+import { GeraisService, Tarefas } from 'src/app/services/gerais.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalhes',
@@ -10,50 +10,89 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetalhesPage implements OnInit {
 
-  todo: Todo = {
-    nome: ' ',
-    phone: ' ',
-    task: ' ',
+  tarefa: Tarefas = {
+    nome: '',
+    phone: '',
+    priority: 0,
+    task: '',
     createdAt: new Date().getTime(),
-    priority: 0
+    concluidas: ['sim', 'não']
   };
-  todoId = null;
-  constructor(private route: ActivatedRoute,
-     private nav: NavController,
-     private geraisService: GeraisService,
-     private loadingController: LoadingController) { }
+
+  constructor(private activatedRoute: ActivatedRoute,
+    private alertCtrl: AlertController,
+    private router: Router,
+    private tarefaServe: GeraisService,
+    private toastCtrl: ToastController,
+  ) { }
   ngOnInit() {
-    this.todoId = this.route.snapshot.params['id'];
-    if (this.todoId)  {
-      this.loadTodo();
-    }
+
   }
-  async loadTodo() {
-    const loading = await this.loadingController.create({
-      message: 'Carregando itens...'
-    });
-    await loading.present();
-    this.geraisService.getTodo(this.todoId).subscribe(res => {
-      loading.dismiss();
-      this.todo = res;
-    });
-  }
-  async salvar() {
-    const loading = await this.loadingController.create({
-      message: 'Salvando Itens....'
-    });
-    await loading.present();
-    if (this.todoId) {
-      this.geraisService.updateTodo(this.todo, this.todoId).then(() => {
-        loading.dismiss();
-        this.nav.navigateBack('home');
-      });
-    } else {
-      this.geraisService.addTodo(this.todo).then(() => {
-        loading.dismiss();
-        this.nav.navigateBack('home');
+  ionViewWillEnter() { //Lê todas as tarefas
+    let id = this.activatedRoute.snapshot.paramMap
+      .get('id');
+    if (id) {
+      this.tarefaServe.getTarefa(id).subscribe(tarefa => {
+        this.tarefa = tarefa;
       });
     }
   }
 
+  addTask() { //Add uma nova tarefa
+    this.tarefaServe.addTarefa(this.tarefa).then(() => {
+      this.router.navigateByUrl('/');
+      this.showToast('Tarefa adicionada!');
+    }, err => {
+      this.showToast(
+        'Erro ao adicionar! :('
+      );
+    });
+  }
+
+  atTask() {// Atualiza e salva uma tarefa
+    this.tarefaServe.updateTarefa(this.tarefa).then(() => {
+      this.router.navigateByUrl('/');
+      this.showToast('Tarefa atualizada');
+    }, err => {
+      this.showToast(
+        'Erro ao atualizar! :('
+      );
+    });
+  }
+
+  async exTask() { // Exlcui um tarefa
+    const alert = await this.alertCtrl.create({
+      header: 'Tem certeza disso!',
+      translucent: true,
+      message: '<strong>Deseja remover a tarefa???</strong>',
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+        cssClass: 'primary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Ok',
+        cssClass: 'primary',
+        handler: () => {
+          this.tarefaServe.removeTarefa(this.tarefa.id).then(() => {
+            this.router.navigateByUrl('/');
+            this.showToast('Excluído com sucesso!');
+          }, err => {
+            this.showToast(
+              'Houve um problema ao exlcui :('
+            );
+          });
+        }
+      }]
+    });
+    await alert.present();
+  }
+  showToast(msg) {
+    this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    }).then(toast => toast.present());
+  }
 }

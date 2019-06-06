@@ -1,12 +1,12 @@
 <ion-app>
   <ion-split-pane>
-    <ion-menu  side="end">
+   <!--  <ion-menu  side="start">
       <ion-header>
-        <ion-toolbar color="dark">
-          <ion-title text-center>APTasks</ion-title>
+        <ion-toolbar color="orange">
+          <ion-title color="warning" text-center>APTasks</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content color="dark" >
+      <ion-content color="orange" >
         <ion-list >
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item color="warning" [routerDirection]="'root'" [routerLink]="[p.url]">
@@ -18,7 +18,7 @@
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
-    </ion-menu>
+    </ion-menu> -->
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
