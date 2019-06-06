@@ -1,3 +1,4 @@
+   ApTasks
 App feito para adicionar contatos e tarefas
 
 Versão 1.2 atual - Solução do erro na barra de status do aplicativo, 
