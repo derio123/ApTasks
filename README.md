@@ -1,4 +1,5 @@
    ApTasks
+   
 App feito para adicionar contatos e tarefas
 
 Versão 1.2 atual - Solução do erro na barra de status do aplicativo, 
@@ -14,9 +15,14 @@ Para instalar o projeto veja algumas orientações abaixos:
     baixe nodejs: https://nodejs.org/en/
 
  - Logo após ter instalado, digite no terminal ou cmd:
+    
     npm i 
+    
+ - Depois digite: 
+   ionic serve
 
  - Para versão mobile Android: 
+    
     ionic cordova run android 
  - Para versão mobile iOS:   
     ionic cordova run ios
