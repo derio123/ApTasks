@@ -10,17 +10,18 @@
       <ion-icon name="book"></ion-icon>
       ApTasks
     </ion-title>
-    <ion-buttons slot="start">
+   <!--  <ion-buttons slot="start">
       <ion-button slot="icon-only">
         <ion-icon color="light" name="search"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="wallpaper">
   <!--Notificações-->
 
+  <ion-searchbar placeholder="Filtrar todas as tarefas" [debounce]="250"></ion-searchbar> <!--  (ionChange)="onSearchChange($event)" -->
   <!--1°Aba-->
   <ion-list class="wallpaper">
     <!--Caso se for  produto usará value do mesmo [ngSwitch]="pet" *ngSwitchCase="'tarefas'"-->
