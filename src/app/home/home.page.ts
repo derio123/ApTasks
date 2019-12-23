@@ -5,8 +5,8 @@ import {
   LoadingController,
   PopoverController,
 } from '@ionic/angular';
-import { MenuComponent } from '../menu/menu.component';
-import { PerfilComponent } from '../perfil/perfil.component';
+import { MenuComponent } from '../components/menu/menu.component';
+import { PerfilComponent } from '../components/perfil/perfil.component';
 
 @Component({
   selector: 'app-home',

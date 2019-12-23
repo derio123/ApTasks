@@ -19,10 +19,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 //Importação da conexão do serviço
 import { ContatoService } from './services/contato.service';
 //Componente criado no ionic
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { PerfilComponent } from './perfil/perfil.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 @NgModule({
   declarations: [AppComponent, MenuComponent, PerfilComponent],
   entryComponents: [MenuComponent, PerfilComponent],
