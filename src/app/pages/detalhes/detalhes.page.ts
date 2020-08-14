@@ -16,7 +16,7 @@ export class DetalhesPage implements OnInit {
     priority: 0,
     task: '',
     createdAt: new Date().getTime(),
-    concluidas: ['sim', 'não']
+    concluidas: ['', 'sim', 'não']
   };
 
   constructor(private activatedRoute: ActivatedRoute,

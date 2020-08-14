@@ -38,8 +38,9 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Concluído?</ion-label>
+      <ion-label>Concluído? </ion-label>
       <ion-select okText="Ok" cancelText="Cancelar" placeholder="Selecione uma" [(ngModel)]="tarefa.concluidas">
+        <ion-select-option value="" aria-checked="checked">Selecione</ion-select-option>
         <ion-select-option value="sim">Sim</ion-select-option>
         <ion-select-option value="não">Não</ion-select-option>
       </ion-select>

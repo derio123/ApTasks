@@ -23,8 +23,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { PerfilComponent } from './components/perfil/perfil.component';
+
 @NgModule({
-  declarations: [AppComponent, MenuComponent, PerfilComponent],
+  declarations: [AppComponent, MenuComponent, PerfilComponent,],
   entryComponents: [MenuComponent, PerfilComponent],
   imports: [
     BrowserModule, 

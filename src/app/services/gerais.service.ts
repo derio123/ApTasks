@@ -10,7 +10,7 @@ export interface Tarefas {
   task: string;
   priority: number;
   createdAt: number;
-  concluidas: ['sim', 'não'];
+  concluidas: ['', 'sim', 'não'];
 }
 
 @Injectable({
