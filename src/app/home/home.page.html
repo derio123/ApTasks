@@ -10,7 +10,7 @@
       <ion-icon name="book"></ion-icon>
       ApTasks
     </ion-title>
-   <!--  <ion-buttons slot="start">
+    <!--  <ion-buttons slot="start">
       <ion-button slot="icon-only">
         <ion-icon color="light" name="search"></ion-icon>
       </ion-button>
@@ -19,21 +19,15 @@
 </ion-header>
 
 <ion-content class="wallpaper">
-  <!--Notificações-->
-
-  <ion-searchbar placeholder="Filtrar todas as tarefas" 
-  animated (ionInput)="filterTarefa($event)" 
-  [debounce]="250" (ionCancel)="onCancel($event)"></ion-searchbar> <!--  (ionChange)="onSearchChange($event)" -->
-  <!--1°Aba-->
+  <ion-searchbar placeholder="Filtrar todas as tarefas" animated="true" (ionChange)="_ionChange($event)"
+    [debounce]="250" (ionCancel)="onCancel($event)" showCancelButton="always">
+  </ion-searchbar>
   <ion-list class="wallpaper">
-    <!--Caso se for  produto usará value do mesmo [ngSwitch]="pet" *ngSwitchCase="'tarefas'"-->
     <ion-card *ngFor="let tarefa of tarefas">
       <ion-item class="item" button [routerLink]="['/detalhes', tarefa.id]">
-        <!-- <ion-icon name="pin" slot="start"></ion-icon> -->
-        <!-- <ion-thumbnail size="large" class="avatar" slot="start">
-          ion-icon size="large" color="primary" name="contact"></ion-icon
-          <img src="../../assets/imgs/ApTasks2019.png">
-        </ion-thumbnail> -->
+        <ion-thumbnail size="large" class="avatar" slot="start">
+          <ion-icon size="large" color="primary" name="contact"></ion-icon>
+        </ion-thumbnail>
         <ion-label color="primary">
           <ion-note slot="icon-only" color="primary"> <b>Nome:</b>{{ tarefa.nome }}</ion-note>
           <br>

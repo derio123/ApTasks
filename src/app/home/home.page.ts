@@ -15,39 +15,52 @@ import { PerfilComponent } from '../components/perfil/perfil.component';
 })
 export class HomePage implements OnInit {
 
-  searchQuery: string = ''; 
+  searchQuery: any = [];
   private tarefas: Tarefas[];
   public loader;
- /*  page = "0";
-  @ViewChild('slider') slider: Slides; */
 
   constructor(private tarefasService: GeraisService,
     public popoverCtrl: PopoverController,
     public loadingCtrl: LoadingController,
     public alertController: AlertController) {
-      this.initialTarefas();
-    }
+    this.initialTarefas();
+  }
+
+  ngOnInit() { //Mostra todos os itens na tela.
+    this.initialTarefas();
+    this.abLoad();
+  }
+
+  ionViewDidEnter() {
+    this.searchQuery =this.tarefas;
+  }
 
   titulo = ['$APC'];
   segmentChanged(ev: any) { //Utilizado para carregar as abas segmentares.
     console.log('Segment changed', ev);
   }
 
-  filterTarefa(ev: any) {
+  _ionChange(ev: any) {
     this.initialTarefas();
+    console.log(ev);
+
     const taf = ev.target.value;
     if (taf && taf.trim() != '') {
-      this.tarefas = this.tarefas.filter((tarefa) =>{
-        return(tarefa.nome.toLowerCase().indexOf(taf.toLowerCase()) >-1);
-      })
+      this.searchQuery = this.tarefas.filter((tarefa) => {
+        return (tarefa.nome.toLowerCase().indexOf(taf.toLowerCase()) > -1);
+      });
+    } else {
+      this.initialTarefas();
     }
   }
+
 
   initialTarefas() {
     this.tarefasService.getTarefas().subscribe(res => {
       this.tarefas = res;
+      this.searchQuery = this.tarefas;
     });
-  }  
+  }
 
   async abLoad() { //Abre o carregamento da pagina
     this.loader = await this.loadingCtrl.create({
@@ -56,11 +69,6 @@ export class HomePage implements OnInit {
       spinner: 'bubbles'
     });
     await this.loader.present();
-  }
-
-  ngOnInit() { //Mostra todos os itens na tela.
-    this.initialTarefas();
-    this.abLoad();
   }
 
   async presentPopover(ev: any) { //Mostra um menu, criado apartir de um componte.
