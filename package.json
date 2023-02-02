@@ -43,7 +43,7 @@
     "@angular-devkit/architect": "^0.1000.5",
     "@angular-devkit/core": "~7.0.0",
     "@angular-devkit/schematics": "~7.0.0",
-    "@angular/cli": "^7.3.9",
+    "@angular/cli": "^15.1.4",
     "@angular/compiler": "~7.0.0",
     "@angular/compiler-cli": "^7.2.15",
     "@angular/language-service": "~7.0.0",
