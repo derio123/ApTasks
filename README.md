@@ -2,7 +2,7 @@
    
 - App feito para adicionar contatos e tarefas
 
-<div align='center'>
+<div align='right'>
   <div>
     <img height='300px' width='auto' src='src/assets/imgs/Screenshot_1689438758.png'/>
   </div>
