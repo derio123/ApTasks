@@ -7,7 +7,7 @@
 <ion-content class="wallpaper">
   <ion-list lines="full" class="wallpaper">
     <ion-avatar class="avatar" slot="start">
-      <!--ion-icon size="large" color="primary" name="contact"></ion-icon-->
+      <!--ion-icon size="large" color="primary" name="contact"></ion-icon>-->
       <img size="large" src="../../../assets/imgs/ApTasks2019.png">
     </ion-avatar>
     <ion-item>
@@ -46,7 +46,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-fab class="item" vertical="top" horizontal="end" slot="fixed">
+  <ion-fab class="item" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
       <ion-buttons>
         <ion-back-button color="light" defaultHref="/home" title="Ir à tela principal" routerDirection="auto">
@@ -59,7 +59,7 @@
 <ion-footer *ngIf="!tarefa.id">
   <ion-toolbar color="success">
     <ion-button title="Adicionar tarefa" size="large" expand="block" fill="clear" color="light" (click)="addTask()">
-      <ion-icon slot="icon-only" name="add" slot="start"></ion-icon>
+      <ion-icon slot="icon-only" name="add" slot="start"></ion-icon> Adicionar
     </ion-button>
   </ion-toolbar>
 </ion-footer>
@@ -68,13 +68,13 @@
   <ion-row no-padding text-center>
     <ion-col size="6">
       <ion-button title="Exclui a tarefa" size="large" expand="block" fill="solid" color="danger" (click)="exTask()">
-        <ion-icon slot="icon-only" name="trash" slot="start"></ion-icon>
+        <ion-icon slot="icon-only" name="trash" slot="start"></ion-icon> Excluir
       </ion-button>
     </ion-col>
     <ion-col size="6">
       <ion-button title="Atualizar a tarefa" size="large" expand="block" fill="solid" color="success"
         (click)="atTask()">
-        <ion-icon slot="icon-only" name="save" slot="start"></ion-icon>
+        <ion-icon slot="icon-only" name="save" slot="start"></ion-icon> Editar
       </ion-button>
     </ion-col>
   </ion-row>

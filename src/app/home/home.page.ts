@@ -4,9 +4,11 @@ import {
   AlertController,
   LoadingController,
   PopoverController,
+  ToastController,
 } from '@ionic/angular';
 import { MenuComponent } from '../components/menu/menu.component';
 import { PerfilComponent } from '../components/perfil/perfil.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,10 +20,21 @@ export class HomePage implements OnInit {
   searchQuery: any = [];
   private tarefas: Tarefas[];
   public loader;
+  tarefa: Tarefas = {
+    nome: '',
+    phone: '',
+    priority: 0,
+    task: '',
+    createdAt: new Date().getTime(),
+    concluidas: ['', 'sim', 'não']
+  };
 
   constructor(private tarefasService: GeraisService,
     public popoverCtrl: PopoverController,
     public loadingCtrl: LoadingController,
+    private router: Router,
+    private tarefaServe: GeraisService,
+    private toastCtrl: ToastController,
     public alertController: AlertController) {
     this.initialTarefas();
   }
@@ -32,7 +45,7 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.searchQuery =this.tarefas;
+    this.searchQuery = this.tarefas;
   }
 
   titulo = ['$APC'];
@@ -88,4 +101,9 @@ export class HomePage implements OnInit {
     });
     return await popover.present();
   }
+
+  criar() { //Add uma nova tarefa
+    this.router.navigateByUrl('detalhes');
+  }
+
 }

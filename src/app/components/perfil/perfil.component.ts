@@ -12,7 +12,7 @@ interface User {
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss'],
   template: `
-<ion-content id="perfil"> <!---->
+<ion-content id="perfil">
   <ion-card class="item" >
     <ion-toolbar *ngIf="(afauth.user | async) as user; else loginItems">
       <ion-grid>
@@ -62,12 +62,12 @@ export class PerfilComponent implements OnInit {
     password: 'aptasks2019'
   };
   constructor(private afauth: AngularFireAuth,
-              private nav: NavController) { }
+    private nav: NavController) { }
 
   ngOnInit() {
   }
 
-  async logout(){ //Sair do app
+  async logout() { //Sair do app
     this.afauth.auth.signOut();
     this.nav.navigateForward('/welcome'); //parei aqui
   }
